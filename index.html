@@ -145,7 +145,7 @@
                         <a class="nav-link text-uppercase active" aria-current="page" href="#anasayfa">Ana Sayfa</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-uppercase" href="#sehitler">Şehitler</a>
+                        <a class="nav-link text-uppercase" href="#sehitler">KAHRAMANLAR</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-uppercase" href="#kurtulus">Kurtuluş Savaşı</a>
@@ -163,25 +163,29 @@
     </nav>
 
     <!-- Hero Section -->
-    <div id="anasayfa" class="page-section active-section py-5 bg-light">
+    <div id="anasayfa" class="page-section active-section py-5 bg-white">
         <div class="container text-center">
-            <h1 class="hero-title display-4 fw-bold mb-2">Tarihe Dokun: Kahramanmaraş</h1>
-            <h3 class="hero-subtitle fst-italic mb-1">"Ya istiklal ya Ölüm!"</h3>
-            <h3 class="hero-subtitle fw-semibold mb-2">– Mustafa Kemal ATATÜRK</h3>
-
-            <p class="hero-description fs-5 fst-italic">"Maraş bize mezar olmadan düşmana gülizar olamaz!"</p>
-            <p class="hero-description fw-semibold mb-2">– Maraş Halkı</p>
 
             <!-- Anıt Görseli -->
-        <div class="container mt-5 text-center">
-            <img src="Resimler/1.png" alt="Kahramanmaraş Anıtı" class="img-fluid rounded shadow"
-                style="max-height: 400px;">
-        </div> <br><br>
+            <div class="container mt-5 text-center">
+                <img src="Resimler/anasayfa.png" alt="Kahramanmaraş Anıtı" class="img-fluid rounded shadow"
+                    style="max-height: 400px;">
+            </div> <br><br>
 
-            <a href="#sehitler" class="btn btn-danger btn-lg px-4" id="kesfetBtn">KEŞFET</a>
+            <a href="#proje" class="btn btn-danger btn-lg px-4 mb-2" id="projeBtn">PROJE HAKKINDA</a> <br>
+
+
+
+            <a href="#kurtulus" class="btn btn-danger btn-lg px-4 mb-2" id="kurtulussavasBtn">KURTULUŞ SAVAŞI</a><br>
+
+            <a href="#kurtulusvemaras" class="btn btn-danger btn-lg px-4 mb-2" id="kurtulussavasvemarasBtn">KURTULUŞ SAVAŞI VE MARAŞ</a><br>
+
+            <a href="#sehitler" class="btn btn-danger btn-lg px-4 mb-2" id="kahramanBtn">KAHRAMANLARI KEŞFET</a>
+
+
         </div>
 
-        
+
     </div>
 
 
@@ -773,7 +777,8 @@
                         <div class="modal-body">
                             Kaynaklarda çok fazla bilgi bulunmayan ancak kurtuluşun kadın-erkek, genç-yaşlı elbirliğiyle
                             gerçekleştiğini göstermesi bakımında önemli bir kişilik olan Hürü Ana 1871’de doğdu. Baba
-                            adı Kalender, anne adı Selver’dir. Nüfustaki kaydı Huri olsa “Hürü Ana” adıyla anılmıştır. <br><br>
+                            adı Kalender, anne adı Selver’dir. Nüfustaki kaydı Huri olsa “Hürü Ana” adıyla anılmıştır.
+                            <br><br>
                             Maraş’ın en eski mahallelerinden Kuytul ( Kurtuluş ) da oturdu. Komşularının çoğunluğu
                             Ermeni idi. Yüzyıllar süren kardeşlik ve de komşuluk bir anda yerini kin ve düşmanlığa
                             bıraktığında Ermeni çetecilerin baskınları ve katliamları konuşulmaya başlandı. Özellikle
@@ -961,7 +966,11 @@
         document.addEventListener("DOMContentLoaded", function () {
             const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
             const sections = document.querySelectorAll(".page-section");
-            const kesfetBtn = document.getElementById("kesfetBtn");
+            const kahramanBtn = document.getElementById("kahramanBtn");
+            const projeBtn = document.getElementById("projeBtn");
+            const kurtulussavasBtn = document.getElementById("kurtulussavasBtn");
+            const kurtulussavasvemarasBtn = document.getElementById("kurtulussavasvemarasBtn");
+
 
             // Sayfa yüklendiğinde URL'deki hash'e göre bölümü aç
             if (window.location.hash) {
@@ -988,7 +997,52 @@
             });
 
             // KEŞFET butonuna tıklama olayını ekle
-            kesfetBtn.addEventListener("click", function (e) {
+            projeBtn.addEventListener("click", function (e) {
+                e.preventDefault();
+
+                // Tüm nav-link'lerden active classını kaldır
+                navLinks.forEach(navLink => {
+                    navLink.classList.remove("active");
+                });
+
+                // Şehitler linkini aktif yap
+                document.querySelector('a[href="#proje"]').classList.add("active");
+
+                // Şehitler bölümünü göster
+                showSection("proje");
+            });
+
+            kurtulussavasBtn.addEventListener("click", function (e) {
+                e.preventDefault();
+
+                // Tüm nav-link'lerden active classını kaldır
+                navLinks.forEach(navLink => {
+                    navLink.classList.remove("active");
+                });
+
+                // Şehitler linkini aktif yap
+                document.querySelector('a[href="#kurtulus"]').classList.add("active");
+
+                // Şehitler bölümünü göster
+                showSection("kurtulus");
+            });
+
+            kurtulussavasvemarasBtn.addEventListener("click", function (e) {
+                e.preventDefault();
+
+                // Tüm nav-link'lerden active classını kaldır
+                navLinks.forEach(navLink => {
+                    navLink.classList.remove("active");
+                });
+
+                // Şehitler linkini aktif yap
+                document.querySelector('a[href="#kurtulusvemaras"]').classList.add("active");
+
+                // Şehitler bölümünü göster
+                showSection("kurtulusvemaras");
+            });
+
+            kahramanBtn.addEventListener("click", function (e) {
                 e.preventDefault();
 
                 // Tüm nav-link'lerden active classını kaldır
@@ -1000,8 +1054,9 @@
                 document.querySelector('a[href="#sehitler"]').classList.add("active");
 
                 // Şehitler bölümünü göster
-                showSection("sehitler");
-            });
+                showSection("sehitler");      
+                
+                 });
 
             // Bölüm göster fonksiyonu
             function showSection(sectionId) {
@@ -1025,8 +1080,6 @@
             }
         });
     </script>
-
-
 
 
 
